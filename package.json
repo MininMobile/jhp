@@ -1,0 +1,19 @@
+{
+  "name": "jhp",
+  "version": "1.0.0",
+  "description": "JavaScript Hypertext Preprocessor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MininMobile/jhp.git"
+  },
+  "author": "Minin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MininMobile/jhp/issues"
+  },
+  "homepage": "https://github.com/MininMobile/jhp#readme"
+}
