@@ -1,4 +1,4 @@
-var private = {};
+var hidden = {};
 
 /**
  * The Parser object
@@ -9,7 +9,7 @@ class Parser {
 	 * @param {bool} prototype Enable Prototype Features
 	 */
 	constructor(prototype = true) {
-		private.prototype = prototype
+		hidden.prototype = prototype
 
 		this.Scope = {
 			echo: function (text) {
