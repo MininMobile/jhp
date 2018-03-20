@@ -8,15 +8,18 @@ class Parser {
 	 * Creates a new Parser object
 	 * @param {bool} prototype Enable Prototype Features
 	 */
-	constructor(prototype = true) {
+	constructor(prototype = false) {
 		hidden.prototype = prototype
 
 		this.Scope = {
 			echo: function (text) {
 				return text;
 			},
-			GET: [],
-			POST: [],
+		};
+
+		if (hidden.prototype) {
+			this.Scope["POST"] = {};
+			this.Scope["GET"] = {};
 		}
 	}
 	
