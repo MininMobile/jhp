@@ -40,7 +40,7 @@ class Parser {
 			} else if (x == "?>") {
 				nextIsCode = false;
 			} else if (nextIsCode) {
-				resB.push(eval(`var Scope = ${this.Scope}; ` + x));
+				resB.push(eval(`var Scope = ${customScope}; ` + x));
 			} else {
 				resB.push(x);
 			}
