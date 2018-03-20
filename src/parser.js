@@ -20,18 +20,35 @@ class Parser {
 		}
 	}
 	
+	/**
+	 * Parse a bit of code or a file
+	 * @param {string} data File/Code to parse
+	 * @param {object} customScope Use a custom scope
+	 */
 	Parse(data, customScope = this.Scope) {
 		var result = data;
 
-		var s = `<body>
-	<h3><?js echo("ur mum is...") ?></h3>
-	<h1>BIG GAY</h1>
-</body>`;
-		var arrStr = s.split(/(\<\?\js)|(\?\>)/);
+		var resA = result.split(/(\<\?\js)|(\?\>)/);
+		var resB = [];
 
-		console.log(arrStr);
+		var nextIsCode = false;
+		resA.forEach((x) => {
+			if (x == null || undefined) {
+				// Do Nothing
+			} else if (x == "<?js") {
+				nextIsCode = true;
+			} else if (x == "?>") {
+				nextIsCode = false;
+			} else if (nextIsCode) {
+				resB.push(eval(`var Scope = ${this.Scope}; ` + x));
+			} else {
+				resB.push(x);
+			}
+		});
 
-		return result
+		result = resB.join();
+
+		return result;
 	}
 }
 module.exports = Parser;
