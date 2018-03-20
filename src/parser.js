@@ -40,13 +40,14 @@ class Parser {
 			} else if (x == "?>") {
 				nextIsCode = false;
 			} else if (nextIsCode) {
-				resB.push(eval(`var Scope = ${customScope}; ` + x));
+				var Scope = customScope;
+				resB.push(eval(x));
 			} else {
 				resB.push(x);
 			}
 		});
 
-		result = resB.join();
+		result = resB.join("");
 
 		return result;
 	}
