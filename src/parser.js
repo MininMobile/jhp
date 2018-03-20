@@ -15,10 +15,23 @@ class Parser {
 			echo: function (text) {
 				return text;
 			},
-			GET:[],
-			POST:[],
+			GET: [],
+			POST: [],
 		}
 	}
-}
+	
+	Parse(data, customScope = this.Scope) {
+		var result = data;
 
+		var s = `<body>
+	<h3><?js echo("ur mum is...") ?></h3>
+	<h1>BIG GAY</h1>
+</body>`;
+		var arrStr = s.split(/(\<\?\js)|(\?\>)/);
+
+		console.log(arrStr);
+
+		return result
+	}
+}
 module.exports = Parser;
