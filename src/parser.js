@@ -26,9 +26,7 @@ class Parser {
 	 * @param {object} customScope Use a custom scope
 	 */
 	Parse(data, customScope = this.Scope) {
-		var result = data;
-
-		var resA = result.split(/(\<\?\js)|(\?\>)/);
+		var resA = data.split(/(\<\?\js)|(\?\>)/);
 		var resB = [];
 
 		var nextIsCode = false;
@@ -47,9 +45,7 @@ class Parser {
 			}
 		});
 
-		result = resB.join("");
-
-		return result;
+		return resB.join("");
 	}
 }
 module.exports = Parser;
