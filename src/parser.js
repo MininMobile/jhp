@@ -77,7 +77,7 @@ class Parser {
 	GetGet(req) {
 		var get = url.parse(req.url, true);
 		
-		this.Scope.GET = url.parse(get.query);
+		this.Scope.GET = url.parse(get);
 	}
 }
 
