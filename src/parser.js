@@ -1,3 +1,6 @@
+const http = require("http");
+const qs = require("querystring");
+
 var hidden = {};
 
 /**
@@ -17,10 +20,8 @@ class Parser {
 			},
 		};
 
-		if (hidden.prototype) {
-			this.Scope["POST"] = {};
-			this.Scope["GET"] = {};
-		}
+		this.Scope.POST = {};
+		this.Scope.GET = {};
 	}
 	
 	/**
@@ -50,5 +51,29 @@ class Parser {
 
 		return resB.join("");
 	}
+
+	/**
+	 * Extract the POST and GET from a http request
+	 * @param {http.ClientRequest} req 
+	 */
+	GetQueryString(req) {
+		if (req.method == "POST") {
+			var post = "";
+	
+			req.on('data', (data) => {
+				post += data;
+	
+				if (post.length > 1e6)
+					req.connection.destroy();
+			});
+			
+			this.Scope.POST = qs.parse(post);
+		}
+
+		if (req.method == "GET") {
+			this.Scope.GET = { /* get stuff here */ };
+		}
+	}
 }
+
 module.exports = Parser;
