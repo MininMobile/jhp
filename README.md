@@ -1,6 +1,24 @@
 # jhp
 JavaScript Hypertext Preprocessor
 
+## Example
+### Input
+File on Server
+```
+<body>
+	<h3><?js Scope.echo("ur mum is...") ?></h3>
+	<h1>BIG GAY</h<?js 1+1-1 ?>>
+</body>
+```
+### Output
+HTML recieved by User
+```
+<body>
+	<h3>ur mum is...</h3>
+	<h1>BIG GAY</h1>
+</body>
+```
+
 ## Functions
 All these are under the `Scope` variable/object.
 
