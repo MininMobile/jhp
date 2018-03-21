@@ -30,4 +30,9 @@ All these are under the `Scope` variable/object.
 
 [ insert stuff here you lazy bastard ]
 
+## Links
+Find `jhp` here;
+- [GitHub](https://github.com/MininMobile/jhp)
+- [npm](https://www.npmjs.com/package/minin-jhp)
+
 *totally not php*

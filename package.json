@@ -1,6 +1,6 @@
 {
   "name": "minin-jhp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "JavaScript Hypertext Preprocessor",
   "main": "index.js",
   "scripts": {
