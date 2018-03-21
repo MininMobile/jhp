@@ -1,5 +1,6 @@
 const http = require("http");
 const qs = require("querystring");
+const url = require("url");
 
 var hidden = {};
 
@@ -53,26 +54,30 @@ class Parser {
 	}
 
 	/**
-	 * Extract the POST and GET from a http request
-	 * @param {http.ClientRequest} req 
+	 * Extract the POST from a http request
+	 * @param {http.ClientRequest} req HTTP Client Request
 	 */
-	GetQueryString(req) {
-		if (req.method == "POST") {
-			var post = "";
-	
-			req.on('data', (data) => {
-				post += data;
-	
-				if (post.length > 1e6)
-					req.connection.destroy();
-			});
-			
-			this.Scope.POST = qs.parse(post);
-		}
+	GetPost(req) {
+		var post = "";
 
-		if (req.method == "GET") {
-			this.Scope.GET = { /* get stuff here */ };
-		}
+		req.on('data', (data) => {
+			post += data;
+
+			if (post.length > 1e6)
+				req.connection.destroy();
+		});
+		
+		this.Scope.POST = qs.parse(post);
+	}
+
+	/**
+	 * Extract the GET from a http request
+	 * @param {http.ClientRequest} req HTTP Client Request
+	 */
+	GetGet(req) {
+		var get = url.parse(req.url, true);
+		
+		this.Scope.GET = url.parse(get.query);
 	}
 }
 
